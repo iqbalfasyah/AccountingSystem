@@ -1,4 +1,6 @@
-﻿namespace AccountingSystem.Domain.Entities
+﻿using BCrypt.Net;
+
+namespace AccountingSystem.Domain.Entities
 {
     public class User
     {
@@ -8,5 +10,10 @@
         public string PasswordHash { get; set; } = string.Empty; // Hashed Password
         public int TenantId { get; set; }
         public Tenant Tenant { get; set; }
+
+        public void SetPassword(string password)
+        {
+            PasswordHash = BCrypt.Net.BCrypt.HashPassword(password);
+        }
     }
 }
