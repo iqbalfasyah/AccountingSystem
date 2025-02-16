@@ -1,0 +1,31 @@
+# Build files
+bin/
+obj/
+*.log
+
+# User-specific files
+.vscode/
+.idea/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# .NET Core dependencies
+*.db
+*.bak
+*.log
+.env
+.env.local
+
+# VS Code settings
+.vscode/
+.history/
+.vs/
+
+# Rider settings
+.idea/
+
+# macOS & Linux files
+.DS_Store
+*.swp
