@@ -4,6 +4,7 @@ using System.Text.Json;
 using AccountingSystem.Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -12,9 +13,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace AccountingSystem.Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250220032910_InitialCreateTables")]
+    partial class InitialCreateTables
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -217,15 +220,6 @@ namespace AccountingSystem.Infrastructure.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Tenants");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            CreatedAt = new DateTime(2024, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc),
-                            Domain = "ifuix.com",
-                            Name = "Default Tenant"
-                        });
                 });
 
             modelBuilder.Entity("AccountingSystem.Domain.Entities.Transaction", b =>
@@ -298,17 +292,6 @@ namespace AccountingSystem.Infrastructure.Migrations
                     b.HasIndex("TenantId");
 
                     b.ToTable("Users");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Email = "balfasyah@gmail.com",
-                            FullName = "Admin User",
-                            PasswordHash = "$2a$11$K3g6XoqyX4vqaWxRxKMhX.WnxJ3wZKfXjuZB4E4Hz0GKXm0Td72fa",
-                            Role = 1,
-                            TenantId = 1
-                        });
                 });
 
             modelBuilder.Entity("AccountingSystem.Domain.Entities.AuditLog", b =>

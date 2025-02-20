@@ -6,6 +6,7 @@ using AccountingSystem.Application.Services.Auth;
 using Microsoft.EntityFrameworkCore;
 using System.Security.Claims;
 using AccountingSystem.Application.Models;
+using AccountingSystem.Domain.Enum;
 
 namespace AccountingSystem.API.Controllers
 {
@@ -35,7 +36,8 @@ namespace AccountingSystem.API.Controllers
                 FullName = request.FullName,
                 Email = request.Email,
                 PasswordHash = BCrypt.Net.BCrypt.HashPassword(request.Password),
-                TenantId = 1 // You might want to handle this differently
+                TenantId = 1,
+                Role = UserRoleEnum.Admin
             };
 
             _context.Users.Add(user);
